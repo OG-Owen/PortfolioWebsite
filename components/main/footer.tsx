@@ -19,7 +19,7 @@ export const Footer = () => {
                   href={link}
                   target="_blank"
                   rel="noreferrer noopener"
-                  className="flex flex-row items-center my-[15px]"
+                  className="flex flex-row items-center my-[15px] hover:text-[#7dd3fc] transition-colors"
                 >
                   {Icon && <Icon />}
                   <span className="text-[15px] ml-[6px]">{name}</span>
@@ -29,8 +29,8 @@ export const Footer = () => {
           ))}
         </div>
 
-        <div className="mb-[20px] text-[15px] text-center">
-          &copy; John Doe {new Date().getFullYear()} Inc. All rights reserved.
+        <div className="mb-[20px] text-[15px] text-center text-gray-400 italic">
+          Everything just is.
         </div>
       </div>
     </div>
