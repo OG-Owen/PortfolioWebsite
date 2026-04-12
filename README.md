@@ -129,6 +129,7 @@ space-portfolio/
   |- constants/
     |-- index.ts
   |- lib/
+    |-- fonts.ts
     |-- github-data.json
     |-- motion.ts
     |-- types.ts
