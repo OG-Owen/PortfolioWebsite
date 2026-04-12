@@ -1,183 +1,92 @@
-<a name="readme-top"></a>
+# Owen Gray — Portfolio
 
-# Modern Space Theme Portfolio using Next.js 14 and Three.js
+> "The universe doesn't grant meaning — which is why I must build."
 
-![Modern Space Theme Portfolio using Next.js 14 and Three.js](/.github/images/img_main.png "Modern Space Theme Portfolio using Next.js 14 and Three.js")
+Live at: [og-owen.github.io/PortfolioWebsite](https://og-owen.github.io/PortfolioWebsite/)
 
-[![Ask Me Anything!](https://flat.badgen.net/static/Ask%20me/anything?icon=github&color=black&scale=1.01)](https://github.com/sanidhyy "Ask Me Anything!")
-[![GitHub license](https://flat.badgen.net/github/license/sanidhyy/space-portfolio?icon=github&color=black&scale=1.01)](https://github.com/sanidhyy/space-portfolio/blob/main/LICENSE "GitHub license")
-[![Maintenance](https://flat.badgen.net/static/Maintained/yes?icon=github&color=black&scale=1.01)](https://github.com/sanidhyy/space-portfolio/commits/main "Maintenance")
-[![GitHub branches](https://flat.badgen.net/github/branches/sanidhyy/space-portfolio?icon=github&color=black&scale=1.01)](https://github.com/sanidhyy/space-portfolio/branches "GitHub branches")
-[![Github commits](https://flat.badgen.net/github/commits/sanidhyy/space-portfolio?icon=github&color=black&scale=1.01)](https://github.com/sanidhyy/space-portfolio/commits "Github commits")
-[![GitHub issues](https://flat.badgen.net/github/issues/sanidhyy/space-portfolio?icon=github&color=black&scale=1.01)](https://github.com/sanidhyy/space-portfolio/issues "GitHub issues")
-[![GitHub pull requests](https://flat.badgen.net/github/prs/sanidhyy/space-portfolio?icon=github&color=black&scale=1.01)](https://github.com/sanidhyy/space-portfolio/pulls "GitHub pull requests")
-[![Netlify Status](https://api.netlify.com/api/v1/badges/451ed0e0-3541-474e-896a-4987e30a7722/deploy-status)](https://spaceportfolio.netlify.app/ "Netlify Status")
+---
 
-<!-- Table of Contents -->
-<details>
+## What this is
 
-<summary>
+My personal portfolio — a corner of the internet that reflects how I actually think. The space theme isn't decorative noise; it's the honest backdrop for a worldview where meaning isn't handed down from somewhere, it's constructed. The site shows what I've been building, in code and in thought.
 
-# :notebook_with_decorative_cover: Table of Contents
+Projects are pulled live from GitHub at build time, so the portfolio stays current without manual upkeep. Pinned repos surface first, everything else follows by recency.
 
-</summary>
+---
 
-- [Folder Structure](#bangbang-folder-structure)
-- [Getting Started](#toolbox-getting-started)
-- [Screenshots](#camera-screenshots)
-- [Tech Stack](#gear-tech-stack)
-- [Stats](#wrench-stats)
-- [Contribute](#raised_hands-contribute)
-- [Acknowledgements](#gem-acknowledgements)
-- [Buy Me a Coffee](#coffee-buy-me-a-coffee)
-- [Follow Me](#rocket-follow-me)
-- [Learn More](#books-learn-more)
-- [Deploy on Vercel](#page_with_curl-deploy-on-vercel)
-- [Give A Star](#star-give-a-star)
-- [Star History](#star2-star-history)
-- [Give A Star](#star-give-a-star)
+## Features
 
-</details>
+- Space-themed 3D visuals powered by Three.js and React Three Fiber
+- Ice blue color palette — subtle, not garish
+- Philosophy woven into the copy, not bolted on
+- Auto-updating projects — fetched from GitHub at build time, pinned repos first
+- Fully static output — deployed to GitHub Pages via GitHub Actions
+- Nightly rebuild keeps project data fresh without any intervention
 
-## :bangbang: Folder Structure
+---
 
-Here is the folder structure of this app.
+## Tech Stack
 
-<!--- FOLDER_STRUCTURE_START --->
+| Layer | Technology |
+|---|---|
+| Framework | Next.js 16 (static export) |
+| UI | React 19, Tailwind CSS |
+| 3D | Three.js, React Three Fiber, Drei |
+| Animation | Framer Motion |
+| Icons | React Icons, Heroicons |
+| Language | TypeScript |
+| Deployment | GitHub Pages via GitHub Actions |
+| Data | GitHub REST + GraphQL APIs |
+
+---
+
+## Local Development
+
+**Prerequisites:** Node.js 20+, npm
+
 ```bash
-space-portfolio/
-  |- app/
-    |-- apple-icon.png
-    |-- favicon.ico
-    |-- globals.css
-    |-- icon1.png
-    |-- icon2.png
-    |-- layout.tsx
-    |-- page.tsx
-  |- components/
-    |-- main/
-    |-- sub/
-  |- config/
-    |-- index.ts
-  |- constants/
-    |-- index.ts
-  |- lib/
-    |-- motion.ts
-    |-- utils.ts
-  |- public/
-  |- .eslintrc.json
-  |- .gitignore
-  |- eslint.config.mjs
-  |- netlify.toml
-  |- next.config.js
-  |- package-lock.json
-  |- package.json
-  |- postcss.config.js
-  |- tailwind.config.ts
-  |- tsconfig.json
+# Install dependencies
+npm install
+
+# Populate GitHub project data (required before first build/dev run)
+GH_PAT=your_token_here npm run fetch-github
+
+# Start the dev server
+npm run dev
 ```
-<!--- FOLDER_STRUCTURE_END --->
 
-<br />
+The dev server runs at `http://localhost:3000`.
 
-## :toolbox: Getting Started
+### GitHub Personal Access Token
 
-1. Make sure **Git** and **NodeJS** is installed.
+`npm run fetch-github` requires a `GH_PAT` environment variable — a GitHub Personal Access Token with the following scopes:
 
-2. Clone this repository to your local computer.
+- `public_repo`
+- `read:user`
 
-3. Open terminal in root directory. Run `npm install --legacy-peer-deps` or `yarn install --legacy-peer-deps`.
+Generate one at [github.com/settings/tokens](https://github.com/settings/tokens). The token is only needed locally and in the repository secret for CI; it is never bundled into the build output.
 
-4. Now app is fully configured 👍 and you can start using this app using `npm run dev` or `yarn dev`.
+---
 
-## :camera: Screenshots:
+## How the auto-update works
 
-![Modern UI/UX](/.github/images/img1.png "Modern UI/UX")
+1. `scripts/fetch-github-data.mjs` calls the GitHub GraphQL API for pinned repos (preserving pin order) and the REST API for all other public repos.
+2. It writes the combined list to `lib/github-data.json`, pinned repos first, the rest sorted by most recently pushed.
+3. At build time, Next.js reads that file statically — no runtime API calls, no rate limits, no latency.
+4. GitHub Actions runs the fetch + build pipeline on every push to `main` **and** on a nightly schedule (2 AM UTC), so the deployed site reflects new repos and activity without any manual step.
 
-![Showcase your skills](/.github/images/img2.png "Showcase your skills")
+The workflow file lives at `.github/workflows/deploy.yml`. The `GH_PAT` secret is stored in the repository's Actions secrets.
 
-![Built with Typescript](/.github/images/img3.png "Built with Typescript")
+---
 
-![Showcase your projects](/.github/images/img4.png "Showcase your projects")
+## Attribution
 
-## :gear: Tech Stack
+This site is built on top of [space-portfolio](https://github.com/sanidhyy/space-portfolio) by [Sanidhya Kumar Verma](https://github.com/sanidhyy), licensed under [MIT](./LICENSE). The original template provided the Three.js scene, animation system, and component structure. Everything else — content, philosophy, color decisions, the GitHub data pipeline, and the deployment setup — is my own.
 
-[![React JS](https://skillicons.dev/icons?i=react "React JS")](https://react.dev/ "React JS") [![Next JS](https://skillicons.dev/icons?i=next "Next JS")](https://nextjs.org/ "Next JS") [![Typescript](https://skillicons.dev/icons?i=ts "Typescript")](https://www.typescriptlang.org/ "Typescript") [![Tailwind CSS](https://skillicons.dev/icons?i=tailwind "Tailwind CSS")](https://tailwindcss.com/ "Tailwind CSS") [![Netlify](https://skillicons.dev/icons?i=netlify "Netlify")](https://netlify.app/ "Netlify") [![Three.js](https://skillicons.dev/icons?i=threejs "Three.js")](https://threejs.org/ "Three.js")
-
-## :wrench: Stats
-
-[![Stats for Space Portfolio](/.github/images/stats.svg "Stats for Space Portfolio")](https://pagespeed.web.dev/analysis/https-spaceportfolio-netlify-app/2efbmg117d "Stats for Space Portfolio")
-
-## :raised_hands: Contribute
-
-You might encounter some bugs while using this app. You are more than welcome to contribute. Just submit changes via pull request and I will review them before merging. Make sure you follow community guidelines.
-
-## :gem: Acknowledgements
-
-Useful resources and dependencies that are used in Space Portfolio.
+---
 
 <!--- DEPENDENCIES_START --->
-- [@heroicons/react](https://www.npmjs.com/package/@heroicons/react): ^2.2.0
-- [@react-three/drei](https://www.npmjs.com/package/@react-three/drei): ^10.7.7
-- [@react-three/fiber](https://www.npmjs.com/package/@react-three/fiber): ^9.5.0
-- [@types/node](https://www.npmjs.com/package/@types/node): ^25
-- [@types/react](https://www.npmjs.com/package/@types/react): 19.2.14
-- [@types/react-dom](https://www.npmjs.com/package/@types/react-dom): 19.2.3
-- [autoprefixer](https://www.npmjs.com/package/autoprefixer): ^10.4.27
-- [clsx](https://www.npmjs.com/package/clsx): ^2.1.1
-- [eslint](https://www.npmjs.com/package/eslint): ^10.1.0
-- [eslint-config-next](https://www.npmjs.com/package/eslint-config-next): 16.2.1
-- [framer-motion](https://www.npmjs.com/package/framer-motion): ^12.38.0
-- [next](https://www.npmjs.com/package/next): 16.2.1
-- [postcss](https://www.npmjs.com/package/postcss): ^8
-- [react](https://www.npmjs.com/package/react): 19.2.4
-- [react-dom](https://www.npmjs.com/package/react-dom): 19.2.4
-- [react-icons](https://www.npmjs.com/package/react-icons): ^5.6.0
-- [react-intersection-observer](https://www.npmjs.com/package/react-intersection-observer): ^10.0.3
-- [tailwind-merge](https://www.npmjs.com/package/tailwind-merge): ^3.5.0
-- [tailwindcss](https://www.npmjs.com/package/tailwindcss): ^3.3.0
-- [three](https://www.npmjs.com/package/three): ^0.183.2
-- [typescript](https://www.npmjs.com/package/typescript): ^6
-
 <!--- DEPENDENCIES_END --->
 
-## :coffee: Buy Me a Coffee
-
-[<img src="https://img.shields.io/badge/Buy_Me_A_Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black" width="200" />](https://www.buymeacoffee.com/sanidhy "Buy me a Coffee")
-
-## :rocket: Follow Me
-
-[![GitHub followers](https://img.shields.io/github/followers/sanidhyy?style=social&label=Follow&maxAge=2592000)](https://github.com/sanidhyy "Follow Me")
-[![Twitter](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fx.com%2F_sanidhyy)](https://x.com/intent/tweet?text=Check+out+this+amazing+app:&url=https%3A%2F%2Fgithub.com%2Fsanidhyy%2Fspace-portfolio "Tweet")
-
-## :books: Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## :page_with_curl: Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-
-## :star: Give A Star
-
-You can also give this repository a star to show more people and they can use this repository.
-
-## :star2: Star History
-
-<a href="https://star-history.com/#sanidhyy/space-portfolio&Timeline">
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=sanidhyy/space-portfolio&type=Timeline&theme=dark" />
-  <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=sanidhyy/space-portfolio&type=Timeline" />
-  <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=sanidhyy/space-portfolio&type=Timeline" />
-</picture>
-</a>
-
-<br />
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<!--- FOLDER_STRUCTURE_START --->
+<!--- FOLDER_STRUCTURE_END --->
