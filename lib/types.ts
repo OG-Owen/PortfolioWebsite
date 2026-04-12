@@ -8,5 +8,6 @@ export type GitHubProject = {
   forks: number;
   topics: string[];
   isPinned: boolean;
+  /** ISO 8601 date string — use new Date(pushedAt) to parse */
   pushedAt: string;
 };
