@@ -1,5 +1,5 @@
 import { ProjectCard } from "@/components/sub/project-card";
-import { PROJECTS } from "@/constants";
+import githubData from "@/lib/github-data.json";
 
 export const Projects = () => {
   return (
@@ -11,7 +11,7 @@ export const Projects = () => {
         My Projects
       </h1>
       <div className="h-full w-full flex flex-col md:flex-row gap-10 px-10">
-        {PROJECTS.map((project) => (
+        {githubData.map((project: any) => (
           <ProjectCard
             key={project.title}
             src={project.image}
