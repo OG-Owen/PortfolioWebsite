@@ -1,11 +1,12 @@
-@import url("https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Philosopher:ital@0;1&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 .cursive {
-  font-family: "Cedarville Cursive", cursive;
+  font-family: "Philosopher", serif;
+  font-style: italic;
 }
 
 .Welcome-text {

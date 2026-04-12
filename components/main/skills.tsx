@@ -13,8 +13,7 @@ export const Skills = () => {
   return (
     <section
       id="skills"
-      style={{ transform: "scale(0.9)" }}
-      className="flex flex-col items-center justify-center gap-3 h-full relative overflow-hidden py-20"
+      className="flex flex-col items-center justify-center gap-3 h-full relative pt-20"
     >
       <SkillText />
 
@@ -80,8 +79,9 @@ export const Skills = () => {
         ))}
       </div>
 
+
       <div className="w-full h-full absolute">
-        <div className="w-full h-full z-[-10] opacity-30 absolute flex items-center justify-center bg-cover">
+        <div className="w-full h-full z-[-10] opacity-20 absolute flex items-center justify-center bg-cover">
           <video
             className="w-full h-auto"
             preload="false"
@@ -89,8 +89,13 @@ export const Skills = () => {
             loop
             muted
             autoPlay
+            style={{
+              filter: "hue-rotate(-70deg) saturate(1.2)",
+              WebkitMaskImage: "radial-gradient(ellipse 80% 70% at 50% 50%, black 40%, transparent 80%)",
+              maskImage: "radial-gradient(ellipse 80% 70% at 50% 50%, black 40%, transparent 80%)",
+            }}
           >
-            <source src="/videos/skills-bg.webm" type="video/webm" />
+            <source src={`${process.env.NEXT_PUBLIC_BASE_PATH}/videos/skills-bg.webm`} type="video/webm" />
           </video>
         </div>
       </div>

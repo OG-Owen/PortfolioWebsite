@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { inter, orbitron } from "@/lib/fonts";
 import type { PropsWithChildren } from "react";
 
 import { Footer } from "@/components/main/footer";
@@ -10,7 +10,6 @@ import { cn } from "@/lib/utils";
 
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
 
 export const viewport: Viewport = {
   themeColor: "#030014",
@@ -23,7 +22,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
     <html lang="en">
       <body
         className={cn(
-          "bg-[#030014] overflow-y-scroll overflow-x-hidden",
+          "bg-[#00000a] overflow-y-scroll overflow-x-hidden",
           inter.className
         )}
       >

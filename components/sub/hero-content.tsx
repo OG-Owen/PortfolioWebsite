@@ -9,6 +9,7 @@ import {
   slideInFromRight,
   slideInFromTop,
 } from "@/lib/motion";
+import { orbitron } from "@/lib/fonts";
 
 export const HeroContent = () => {
   return (
@@ -30,13 +31,13 @@ export const HeroContent = () => {
 
         <motion.div
           variants={slideInFromLeft(0.5)}
-          className="flex flex-col gap-6 mt-6 text-6xl font-bold text-white max-w-[600px] w-auto h-auto"
+          className={`flex flex-row items-baseline gap-4 mt-6 whitespace-nowrap ${orbitron.className}`}
         >
-          <span>
-            Owen{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7dd3fc] to-cyan-400">
-              Gray
-            </span>
+          <span className="text-6xl font-900 tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-[#7dd3fc] to-[#bae6fd]">
+            OWEN
+          </span>
+          <span className="text-6xl font-900 tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-[#c4c9d4] to-gray-500">
+            GRAY
           </span>
         </motion.div>
 
@@ -44,7 +45,7 @@ export const HeroContent = () => {
           variants={slideInFromLeft(0.8)}
           className="text-lg text-gray-400 my-5 max-w-[600px] italic"
         >
-          &ldquo;The universe doesn&apos;t grant meaning &mdash; which is why I must build.&rdquo;
+          The universe doesn&apos;t grant meaning &mdash; which is why I must build.
         </motion.p>
 
         <motion.a
@@ -67,6 +68,12 @@ export const HeroContent = () => {
           width={650}
           draggable={false}
           className="select-none"
+          style={{
+            WebkitMaskImage:
+              "radial-gradient(ellipse 70% 70% at 50% 50%, black 45%, transparent 80%)",
+            maskImage:
+              "radial-gradient(ellipse 70% 70% at 50% 50%, black 45%, transparent 80%)",
+          }}
         />
       </motion.div>
     </motion.div>

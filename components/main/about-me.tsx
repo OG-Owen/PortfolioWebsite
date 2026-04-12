@@ -1,0 +1,78 @@
+"use client";
+
+import { motion } from "framer-motion";
+import Image from "next/image";
+
+import { slideInFromTop } from "@/lib/motion";
+import { orbitron } from "@/lib/fonts";
+
+export const Encryption = () => {
+  return (
+    <div
+      id="about-me"
+      className="flex flex-row relative items-center justify-center min-h-screen w-full h-full"
+    >
+      <div className="absolute w-full flex flex-col items-center top-0 z-[5] px-6 gap-3">
+        <p className="cursive text-[20px] text-gray-400 text-center max-w-[700px] tracking-wide pt-20 pb-6">
+          We don&apos;t know what a mind is, yet here&apos;s what mine has learned to do.
+        </p>
+        <motion.div variants={slideInFromTop} className="flex flex-col items-center gap-3">
+          <h2 className={`text-[40px] font-900 text-white tracking-wide ${orbitron.className}`}>
+            About Me
+          </h2>
+          <div className="w-24 h-[2px] bg-gradient-to-r from-[#7dd3fc] to-[#bae6fd] rounded-full opacity-70" />
+        </motion.div>
+      </div>
+
+      <div className="flex flex-col items-center justify-center translate-y-[-50px] absolute z-[20] w-auto h-auto">
+        <div className="flex flex-col items-center group cursor-pointer w-auto h-auto">
+          <Image
+            src="/lock-top.png"
+            alt="Lock top"
+            width={50}
+            height={50}
+            className="translate-y-5 transition-all duration-200 group-hover:translate-y-11"
+            style={{ filter: "sepia(1) hue-rotate(175deg) saturate(3) brightness(1.1)" }}
+          />
+          <Image
+            src="/lock-main.png"
+            alt="Lock main"
+            width={70}
+            height={70}
+            className="z-10"
+            style={{ filter: "sepia(1) hue-rotate(175deg) saturate(3) brightness(1.1)" }}
+          />
+        </div>
+
+        <div className="Welcome-box px-[15px] py-[4px] z-[20] border my-[20px] border-[#1e3a5f8b] opacity-[0.9]">
+          <h1 className="Welcome-text text-[12px]">Owen Gray</h1>
+        </div>
+      </div>
+
+      <div className="absolute z-[20] bottom-[10px] px-[5px] max-w-[600px] text-center">
+        <div className="cursive text-[18px] font-medium text-center text-gray-300 leading-relaxed">
+          I write code because it&apos;s what I like to do. Nobody has the answers — not to why anything exists, not to what any of this really is. I find that freeing. So I build, I learn, and I sit with the uncertainty. Whatever this experience is, I&apos;d rather spend it creating things.
+        </div>
+      </div>
+
+
+      <div className="w-full flex items-start justify-center absolute opacity-30">
+        <video
+          loop
+          muted
+          autoPlay
+          playsInline
+          preload="false"
+          className="w-full h-auto"
+          style={{
+            filter: "hue-rotate(-50deg) saturate(0.9) brightness(1.05)",
+            WebkitMaskImage: "radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 80%)",
+            maskImage: "radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 80%)",
+          }}
+        >
+          <source src={`${process.env.NEXT_PUBLIC_BASE_PATH}/videos/encryption-bg.webm`} type="video/webm" />
+        </video>
+      </div>
+    </div>
+  );
+};

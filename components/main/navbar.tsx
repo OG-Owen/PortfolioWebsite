@@ -1,7 +1,7 @@
 'use client';
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
+import { orbitron } from "@/lib/fonts";
 
 import { LINKS, NAV_LINKS, SOCIALS } from "@/constants";
 
@@ -12,17 +12,61 @@ export const Navbar = () => {
     <div className="w-full h-[65px] fixed top-0 shadow-lg shadow-[#0c1a2e]/50 bg-[#03001427] backdrop-blur-md z-50 px-10">
       <div className="w-full h-full flex items-center justify-between m-auto px-[10px]">
         {/* Logo + Name */}
-        <Link href="#about-me" className="flex items-center">
-          <Image
-            src="/logo.png"
-            alt="Logo"
-            width={70}
-            height={70}
-            draggable={false}
-            className="cursor-pointer"
-          />
-          <div className="hidden md:flex font-bold ml-[10px] text-gray-300">
-            Owen Gray
+        <Link href="#about-me" className="flex items-center gap-3 group">
+          {/* OG monogram */}
+          <svg width="40" height="26" viewBox="0 0 40 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="o-blue" x1="0" y1="0" x2="1" y2="0" gradientUnits="objectBoundingBox">
+                <stop offset="0%" stopColor="#7dd3fc" />
+                <stop offset="100%" stopColor="#bae6fd" />
+              </linearGradient>
+              <linearGradient id="g-gray" x1="0" y1="0" x2="1" y2="0" gradientUnits="objectBoundingBox">
+                <stop offset="0%" stopColor="#c4c9d4" />
+                <stop offset="100%" stopColor="#6b7280" />
+              </linearGradient>
+              <filter id="og-glow">
+                <feGaussianBlur stdDeviation="1.5" result="blur" />
+                <feMerge>
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
+            <text
+              x="1"
+              y="21"
+              fontFamily={`${orbitron.style.fontFamily}, sans-serif`}
+              fontWeight="900"
+              fontSize="20"
+              fill="url(#o-blue)"
+              filter="url(#og-glow)"
+            >
+              O
+            </text>
+            <text
+              x="22"
+              y="21"
+              fontFamily={`${orbitron.style.fontFamily}, sans-serif`}
+              fontWeight="900"
+              fontSize="20"
+              fill="url(#g-gray)"
+              filter="url(#og-glow)"
+            >
+              G
+            </text>
+          </svg>
+
+          {/* Divider */}
+          <div className="hidden md:block w-px h-5 bg-white opacity-50" />
+
+          {/* Name */}
+          <div className={`hidden md:flex flex-row gap-2 items-center leading-none ${orbitron.className}`}>
+            <span className="text-[20px] font-700 tracking-[0.2em] text-transparent bg-clip-text bg-gradient-to-r from-[#7dd3fc] to-[#bae6fd]">
+              OWEN
+            </span>
+            <span className="text-[20px] font-900 tracking-[0.2em] text-transparent bg-clip-text bg-gradient-to-r from-[#c4c9d4] to-gray-500">
+              GRAY
+            </span>
           </div>
         </Link>
 

@@ -30,7 +30,7 @@ export const Footer = () => {
         </div>
 
         <div className="mb-[20px] text-[15px] text-center text-gray-400 italic">
-          Everything just is.
+          &ldquo;Everything just is.&rdquo;
         </div>
       </div>
     </div>

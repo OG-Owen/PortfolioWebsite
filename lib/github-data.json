@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "name": "YouTube-Auto-Quality-Controller",
+    "description": "A Tampermonkey userscript that automatically sets YouTube video quality to match your monitor resolution or forces the highest available.",
+    "url": "https://github.com/OG-Owen/YouTube-Auto-Quality-Controller",
+    "homepage": null,
+    "language": "JavaScript",
+    "stars": 0,
+    "forks": 0,
+    "topics": [],
+    "isPinned": false,
+    "pushedAt": "2025-11-14T21:22:40Z"
+  }
+]
