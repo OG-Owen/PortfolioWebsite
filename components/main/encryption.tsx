@@ -7,17 +7,19 @@ import { slideInFromTop } from "@/lib/motion";
 
 export const Encryption = () => {
   return (
-    <div className="flex flex-row relative items-center justify-center min-h-screen w-full h-full -z-20">
+    <div
+      id="about-me"
+      className="flex flex-row relative items-center justify-center min-h-screen w-full h-full -z-20"
+    >
       <div className="absolute w-auto h-auto top-0 z-[5]">
         <motion.div
           variants={slideInFromTop}
           className="text-[40px] font-medium text-center text-gray-200"
         >
-          Performance{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-cyan-500">
-            &
-          </span>{" "}
-          security.
+          About{" "}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7dd3fc] to-cyan-400">
+            Me
+          </span>
         </motion.div>
       </div>
 
@@ -39,14 +41,14 @@ export const Encryption = () => {
           />
         </div>
 
-        <div className="Welcome-box px-[15px] py-[4px] z-[20] border my-[20px] border-[#7042F88B] opacity-[0.9]">
-          <h1 className="Welcome-text text-[12px]">Encryption</h1>
+        <div className="Welcome-box px-[15px] py-[4px] z-[20] border my-[20px] border-[#1e3a5f8b] opacity-[0.9]">
+          <h1 className="Welcome-text text-[12px]">Owen Gray</h1>
         </div>
       </div>
 
-      <div className="absolute z-[20] bottom-[10px] px-[5px]">
-        <div className="cursive text-[20px] font-medium text-center text-gray-300">
-          Secure your data with end-to-end encryption.
+      <div className="absolute z-[20] bottom-[10px] px-[5px] max-w-[600px] text-center">
+        <div className="cursive text-[18px] font-medium text-center text-gray-300 leading-relaxed">
+          I write code because I&apos;m here and it&apos;s what I do. Nobody has the answers — not to why anything exists, not to what any of this really is. I find that freeing. So I build, I learn, and I sit with the uncertainty. Whatever this experience is, I&apos;d rather spend it creating things.
         </div>
       </div>
 
