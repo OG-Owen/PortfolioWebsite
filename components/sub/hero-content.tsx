@@ -62,7 +62,7 @@ export const HeroContent = () => {
         className="w-full h-full flex justify-center items-center"
       >
         <Image
-          src="/hero-bg.svg"
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/hero-bg.svg`}
           alt="space illustration"
           height={650}
           width={650}

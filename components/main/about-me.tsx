@@ -27,7 +27,7 @@ export const Encryption = () => {
       <div className="flex flex-col items-center justify-center translate-y-[-50px] absolute z-[20] w-auto h-auto">
         <div className="flex flex-col items-center group cursor-pointer w-auto h-auto">
           <Image
-            src="/lock-top.png"
+            src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/lock-top.png`}
             alt="Lock top"
             width={50}
             height={50}
@@ -35,7 +35,7 @@ export const Encryption = () => {
             style={{ filter: "sepia(1) hue-rotate(175deg) saturate(3) brightness(1.1)" }}
           />
           <Image
-            src="/lock-main.png"
+            src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/lock-main.png`}
             alt="Lock main"
             width={70}
             height={70}

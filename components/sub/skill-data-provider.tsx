@@ -39,7 +39,7 @@ export const SkillDataProvider = ({
       custom={index}
       transition={{ delay: index * animationDelay }}
     >
-      <Image src={`/skills/${src}`} width={width} height={height} alt={name} />
+      <Image src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/skills/${src}`} width={width} height={height} alt={name} />
     </motion.div>
   );
 };
