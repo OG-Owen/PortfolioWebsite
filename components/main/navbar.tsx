@@ -9,8 +9,8 @@ export const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <div className="w-full h-[65px] fixed top-0 shadow-lg shadow-[#0c1a2e]/50 bg-[#03001427] backdrop-blur-md z-50 px-10">
-      <div className="w-full h-full flex items-center justify-between m-auto px-[10px]">
+    <div className="w-full h-[65px] fixed top-0 shadow-lg shadow-[#0c1a2e]/50 bg-[#03001427] backdrop-blur-md z-50 px-4 md:px-10">
+      <div className="w-full h-full flex items-center justify-between m-auto">
         {/* Logo + Name */}
         <Link href="#about-me" className="flex items-center gap-3 group">
           {/* OG monogram */}

@@ -14,7 +14,7 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
       href={project.url}
       target="_blank"
       rel="noreferrer noopener"
-      className="relative overflow-hidden rounded-lg shadow-lg border border-[#1e3a5f] bg-[#030014] flex flex-col p-6 gap-4 hover:border-[#7dd3fc] transition-colors duration-300 cursor-pointer"
+      className="relative overflow-hidden rounded-lg shadow-lg border border-[#1e3a5f] bg-[#030014] flex flex-col p-6 gap-4 hover:border-[#7dd3fc] transition-colors duration-300 cursor-pointer items-center text-center w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] max-w-sm"
     >
       {/* Header */}
       <div className="flex items-center gap-2 flex-wrap">

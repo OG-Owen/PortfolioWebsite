@@ -16,7 +16,7 @@ export const HeroContent = () => {
     <motion.div
       initial="hidden"
       animate="visible"
-      className="flex flex-row items-center justify-center px-20 mt-40 w-full z-[20]"
+      className="flex flex-col md:flex-row items-center justify-center px-6 md:px-20 mt-24 md:mt-40 w-full z-[20]"
     >
       <div className="h-full w-full flex flex-col gap-5 justify-center m-auto text-start">
         <motion.div
@@ -31,12 +31,12 @@ export const HeroContent = () => {
 
         <motion.div
           variants={slideInFromLeft(0.5)}
-          className={`flex flex-row items-baseline gap-4 mt-6 whitespace-nowrap ${orbitron.className}`}
+          className={`flex flex-row items-baseline gap-4 mt-6 flex-wrap ${orbitron.className}`}
         >
-          <span className="text-6xl font-900 tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-[#7dd3fc] to-[#bae6fd]">
+          <span className="text-[clamp(2rem,8vw,3.75rem)] font-900 tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-[#7dd3fc] to-[#bae6fd]">
             OWEN
           </span>
-          <span className="text-6xl font-900 tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-[#c4c9d4] to-gray-500">
+          <span className="text-[clamp(2rem,8vw,3.75rem)] font-900 tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-[#c4c9d4] to-gray-500">
             GRAY
           </span>
         </motion.div>
@@ -59,7 +59,7 @@ export const HeroContent = () => {
 
       <motion.div
         variants={slideInFromRight(0.8)}
-        className="w-full h-full flex justify-center items-center"
+        className="hidden md:flex w-full h-full justify-center items-center"
       >
         <Image
           src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/hero-bg.svg`}

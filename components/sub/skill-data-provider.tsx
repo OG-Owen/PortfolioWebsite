@@ -38,6 +38,7 @@ export const SkillDataProvider = ({
       animate={inView ? "visible" : "hidden"}
       custom={index}
       transition={{ delay: index * animationDelay }}
+      className="flex-shrink-0"
     >
       <Image src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/skills/${src}`} width={width} height={height} alt={name} style={{ width: `${width}px`, height: `${height}px` }} />
     </motion.div>

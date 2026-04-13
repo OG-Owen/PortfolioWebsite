@@ -7,7 +7,7 @@ export const Hero = () => {
         autoPlay
         muted
         loop
-        className="rotate-180 absolute top-[-340px] left-0 w-full h-full object-cover -z-20"
+        className="rotate-180 absolute top-[-10vh] md:top-[-340px] left-0 w-full h-full object-cover -z-20"
         style={{
           filter: "hue-rotate(-70deg) saturate(1.2)",
           WebkitMaskImage:
