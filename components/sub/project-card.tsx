@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 
 import type { GitHubProject } from "@/lib/types";
@@ -8,25 +10,20 @@ type ProjectCardProps = {
 
 export const ProjectCard = ({ project }: ProjectCardProps) => {
   return (
-    <div className="relative overflow-hidden rounded-lg shadow-lg border border-[#1e3a5f] bg-[#030014] flex flex-col p-6 gap-4 hover:border-[#7dd3fc] transition-colors duration-300">
+    <Link
+      href={project.url}
+      target="_blank"
+      rel="noreferrer noopener"
+      className="relative overflow-hidden rounded-lg shadow-lg border border-[#1e3a5f] bg-[#030014] flex flex-col p-6 gap-4 hover:border-[#7dd3fc] transition-colors duration-300 cursor-pointer"
+    >
       {/* Header */}
-      <div className="flex items-start justify-between gap-2">
-        <div className="flex items-center gap-2 flex-wrap">
-          {project.isPinned && (
-            <span className="text-[10px] font-bold uppercase tracking-wider bg-[#7dd3fc] text-[#030014] px-2 py-0.5 rounded-full">
-              Pinned
-            </span>
-          )}
-          <h2 className="text-white font-semibold text-lg">{project.name}</h2>
-        </div>
-        <Link
-          href={project.url}
-          target="_blank"
-          rel="noreferrer noopener"
-          className="text-[#7dd3fc] text-sm whitespace-nowrap hover:underline"
-        >
-          View ↗
-        </Link>
+      <div className="flex items-center gap-2 flex-wrap">
+        {project.isPinned && (
+          <span className="text-[10px] font-bold uppercase tracking-wider bg-[#7dd3fc] text-[#030014] px-2 py-0.5 rounded-full">
+            Pinned
+          </span>
+        )}
+        <h2 className="text-white font-semibold text-lg">{project.name}</h2>
       </div>
 
       {/* Description */}
@@ -59,16 +56,17 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
         <span>★ {project.stars}</span>
         <span>⑂ {project.forks}</span>
         {project.homepage && (
-          <Link
-            href={project.homepage}
-            target="_blank"
-            rel="noreferrer noopener"
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              window.open(project.homepage!, "_blank", "noreferrer");
+            }}
             className="text-[#7dd3fc] hover:underline ml-auto"
           >
             Live site ↗
-          </Link>
+          </button>
         )}
       </div>
-    </div>
+    </Link>
   );
 };

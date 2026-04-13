@@ -64,8 +64,9 @@ export const HeroContent = () => {
         <Image
           src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/hero-bg.svg`}
           alt="space illustration"
-          height={650}
-          width={650}
+          height={665}
+          width={664}
+          priority
           draggable={false}
           className="select-none"
           style={{

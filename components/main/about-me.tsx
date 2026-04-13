@@ -32,7 +32,7 @@ export const Encryption = () => {
             width={50}
             height={50}
             className="translate-y-5 transition-all duration-200 group-hover:translate-y-11"
-            style={{ filter: "sepia(1) hue-rotate(175deg) saturate(3) brightness(1.1)" }}
+            style={{ width: "50px", height: "50px", filter: "sepia(1) hue-rotate(175deg) saturate(3) brightness(1.1)" }}
           />
           <Image
             src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/lock-main.png`}
@@ -40,7 +40,7 @@ export const Encryption = () => {
             width={70}
             height={70}
             className="z-10"
-            style={{ filter: "sepia(1) hue-rotate(175deg) saturate(3) brightness(1.1)" }}
+            style={{ width: "70px", height: "70px", filter: "sepia(1) hue-rotate(175deg) saturate(3) brightness(1.1)" }}
           />
         </div>
 
